@@ -1,5 +1,7 @@
 # Protocol
 
+Current protocol version: `0.1`.
+
 The protocol is JSON-compatible and intentionally small.
 
 ## EffectRequest
@@ -52,3 +54,11 @@ export interface RedactionSummary {
 ```
 
 Responses are expected to be redacted before they reach a Guest. This package validates the response shape only; it does not perform Host redaction.
+
+## Validation Errors
+
+Validators throw `ProtocolValidationError` with:
+
+- `code`: machine-readable error code
+- `message`: human-readable validation message
+- `path`: JSON-style field path, such as `$.params.command`

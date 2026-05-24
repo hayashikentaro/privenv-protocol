@@ -1,5 +1,7 @@
 # Manifest
 
+Current protocol version: `0.1`.
+
 The Guest manifest is a safe capability description. It is not a Host config file and must not contain raw secret values.
 
 ```ts

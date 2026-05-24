@@ -4,7 +4,7 @@ export class ProtocolValidationError extends Error {
     message: string,
     public readonly path = "$"
   ) {
-    super(`${message} at ${path}`);
+    super(message);
     this.name = "ProtocolValidationError";
   }
 }

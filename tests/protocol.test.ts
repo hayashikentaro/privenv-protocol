@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import test from "node:test";
 import {
+  PROTOCOL_VERSION,
   ProtocolValidationError,
   validateEffectRequest,
   validateEffectResponse,
@@ -11,6 +12,10 @@ import {
 } from "../src/index.js";
 
 const fixtureDir = join("tests", "fixtures");
+
+test("PROTOCOL_VERSION is 0.1", () => {
+  assert.equal(PROTOCOL_VERSION, "0.1");
+});
 
 test("valid EffectRequest fixture parses", async () => {
   const value = await readFixture("effect-request.valid.json");
@@ -65,6 +70,36 @@ test("manifest env must not be exposed to Guest", async () => {
   value.capabilities[0].env[0].exposedToGuest = true;
 
   assert.throws(() => validateGuestManifest(value), ProtocolValidationError);
+});
+
+test("validators reject unsupported exposedToGuest true", () => {
+  assert.throws(
+    () =>
+      validateGuestManifest({
+        version: "0.1",
+        capabilities: [
+          {
+            id: "cmd.example.test",
+            kind: "command",
+            description: "Run fake test",
+            env: [{ name: "EXAMPLE_SERVICE_TOKEN", source: "secret", exposedToGuest: true }]
+          }
+        ]
+      }),
+    ProtocolValidationError
+  );
+});
+
+test("ProtocolValidationError exposes code, message, and path", () => {
+  try {
+    validateRequestParams({ nested: { command: "blocked" } });
+    assert.fail("validateRequestParams should throw");
+  } catch (error) {
+    assert.ok(error instanceof ProtocolValidationError);
+    assert.equal(error.code, "protocol.request_params_invalid");
+    assert.equal(error.message, "request params must not include command");
+    assert.equal(error.path, "$.params.nested.command");
+  }
 });
 
 test("fixtures contain no raw secret-like values", async () => {
