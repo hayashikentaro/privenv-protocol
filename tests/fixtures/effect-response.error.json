@@ -1,0 +1,10 @@
+{
+  "requestId": "req_fake_002",
+  "type": "effect.response",
+  "ok": false,
+  "error": {
+    "code": "capability.not_found",
+    "message": "Requested capability is not available"
+  },
+  "auditId": "audit_fake_002"
+}

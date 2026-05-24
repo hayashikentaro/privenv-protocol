@@ -1,0 +1,14 @@
+dist/
+node_modules/
+.npm-cache/
+*.log
+*.tgz
+
+.env
+.env.*
+!.env.example
+.privenv/
+privenv.host.json
+privenv.manifest.json
+vault.json
+audit.log.jsonl

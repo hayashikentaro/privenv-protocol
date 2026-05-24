@@ -1,0 +1,35 @@
+{
+  "name": "@privenv/protocol",
+  "version": "0.1.0",
+  "description": "Shared protocol types and validators for privenv.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js"
+    }
+  },
+  "files": [
+    "dist/src/",
+    "dist/scripts/",
+    "README.md",
+    "LICENSE",
+    "docs/"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test dist/tests",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "pack:check": "npm run build && npm test && npm pack --silent | node dist/scripts/check-package-files.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "typescript": "^5.7.3"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "version": "0.1",
+  "capabilities": [
+    {
+      "id": "cmd.example.test",
+      "kind": "command",
+      "description": "Run the fake example test capability",
+      "command": {
+        "program": "npm",
+        "args": ["test"]
+      },
+      "env": [
+        {
+          "name": "EXAMPLE_SERVICE_TOKEN",
+          "source": "secret",
+          "exposedToGuest": false
+        }
+      ]
+    }
+  ]
+}

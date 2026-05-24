@@ -1,0 +1,18 @@
+{
+  "requestId": "req_fake_001",
+  "type": "effect.response",
+  "ok": true,
+  "result": {
+    "exitCode": 0,
+    "stdout": "fixture command completed with redacted output",
+    "stderr": "",
+    "redactions": [
+      {
+        "stream": "stdout",
+        "count": 1,
+        "reason": "secret"
+      }
+    ]
+  },
+  "auditId": "audit_fake_001"
+}

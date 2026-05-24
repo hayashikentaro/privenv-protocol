@@ -1,0 +1,13 @@
+{
+  "id": "req_fake_001",
+  "type": "effect.request",
+  "capabilityId": "cmd.example.test",
+  "params": {
+    "label": "fixture-safe-run"
+  },
+  "metadata": {
+    "guestName": "fake-guest",
+    "guestRunId": "run_fake_001",
+    "reason": "local fixture validation"
+  }
+}
