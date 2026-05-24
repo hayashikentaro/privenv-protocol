@@ -11,8 +11,10 @@ const forbiddenPatterns = [
   /^package\/\.privenv\//,
   /^package\/node_modules\//,
   /^package\/src\//,
+  /^package\/scripts\//,
   /^package\/tests\//,
   /^package\/dist\/tests\//,
+  /^package\/dist\/scripts\//,
   /privenv\.host\.json$/,
   /privenv\.manifest\.json$/,
   /vault\.json$/,
@@ -24,7 +26,7 @@ const requiredFiles = new Set([
   "package/README.md",
   "package/LICENSE",
   "package/dist/src/index.js",
-  "package/dist/scripts/check-package-files.js"
+  "package/dist/src/index.d.ts"
 ]);
 
 const tarballName = await readStdin();

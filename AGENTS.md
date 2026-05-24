@@ -9,9 +9,14 @@ Future Codex agents must:
 - Do not inspect `privenv-guest`.
 - If Host or Guest details are needed, stop and request an explicit copied spec.
 - Keep this package protocol-only.
+- Do not run `npm publish` unless explicitly requested.
+- Do not add npm tokens.
+- Do not add publish automation.
 - Do not implement Host runtime behavior.
 - Do not implement Guest runtime behavior.
 - Do not add transport unless explicitly requested.
+- Do not implement secret handling.
+- Do not implement passthrough behavior.
 - Do not add secret APIs.
 - Do not read `.env`.
 - Do not read or expose `process.env`.
